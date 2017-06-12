@@ -1,0 +1,35 @@
+{
+    "name": "ci-snippets2",
+    "displayName": "ci-snippets2",
+    "description": "Ths is a collection of snippets for the CodeIgniter PHP Framework.",
+    "version": "0.0.1",
+    "publisher": "Anish-M",
+    "engines": {
+        "vscode": "^1.12.0"
+    },
+    "bugs":{
+        "email": "contact@anishmandal.in"
+    },
+    "keywords": [
+        "PHP",
+        "CI",
+        "CodeIgniter",
+        "Framework"
+    ],
+    "categories": [
+        "Snippets"
+    ],
+    "icon": "cilogo.png",
+    "galleryBanner": {
+        "color": "#dd5106",
+        "theme": "dark"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "php",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}

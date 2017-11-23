@@ -116,7 +116,7 @@
 	},
 	"db_insert_id": {
 		"prefix": "db_insert_id",
-		"body": "$$this->db->insert_id();\n",
+		"body": "$$this->db->insert_id($1);\n$2",
 		"description": "CI - Active Record DB Last Inserted Id"
 	},
 	"db_join": {
@@ -126,7 +126,7 @@
 	},
 	"db_last": {
 		"prefix": "db_last",
-		"body": "$$this->db->last_query();\n",
+		"body": "$$this->db->last_query($1);\n$2",
 		"description": "CI - Active Record DB Helper Functions"
 	},
 	"db_limit": {
@@ -136,27 +136,27 @@
 	},
 	"db_num_fields": {
 		"prefix": "db_num_fields",
-		"body": "\r\n$${1:Var}->num_fields();\r\n",
+		"body": "\r\n$${1:Var}->num_fields($2);\r\n",
 		"description": "CI - Active Record DB Num Fields"
 	},
 	"db_num_rows": {
 		"prefix": "db_num_rows",
-		"body": "\r\n$${1:Var}->num_rows();\r\n",
+		"body": "\r\n$${1:Var}->num_rows($2);\r\n",
 		"description": "CI - Active Record DB Num Rows"
 	},
 	"db_order": {
 		"prefix": "db_order",
-		"body": "$$this->db->order_by('${1:title}', '${2:desc}');\n",
+		"body": "$$this->db->order_by('${1:title}', '${2:desc}');\n$3",
 		"description": "CI - Active Record DB Order By"
 	},
 	"db_result": {
 		"prefix": "db_result",
-		"body": "\r\n$${1:Var}->result();\r\n",
+		"body": "\r\n$${1:Var}->result($2);\r\n$3",
 		"description": "CI - Active Record DB Result"
 	},
 	"db_result_array": {
 		"prefix": "db_result_array",
-		"body": "\r\n$${1:Var}->result_array();\r\n",
+		"body": "\r\n$${1:Var}->result_array($2);\r\n",
 		"description": "CI - Active Record DB Result Array"
 	},
 	"db_row": {
@@ -191,17 +191,17 @@
 	},
 	"display_cart": {
 		"prefix": "display_cart",
-		"body": "\n<?php echo form_open('path/to/controller/update/function'); ?>\n\n<table cellpadding=\"6\" cellspacing=\"1\" style=\"width:100%\" border=\"0\">\n\n<tr>\n\t<th>QTY</th>\n\t<th>Item Description</th>\n\t<th style=\"text-align:right\">Item Price</th>\n\t<th style=\"text-align:right\">Sub-Total</th>\n</tr>\n\n<?php $i = 1; ?>\n\n<?php foreach ($this->cart->contents() as $items): ?>\n\n\t<?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>\n\n\t<tr>\n\t\t<td><?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>\n\t\t<td>\n\t\t<?php echo $items['name']; ?>\n\n\t\t\t<?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>\n\n\t\t\t\t<p>\n\t\t\t\t\t<?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value): ?>\n\n\t\t\t\t\t\t<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />\n\n\t\t\t\t\t<?php endforeach; ?>\n\t\t\t\t</p>\n\n\t\t\t<?php endif; ?>\n\n\t\t</td>\n\t\t<td style=\"text-align:right\"><?php echo $this->cart->format_number($items['price']); ?></td>\n\t\t<td style=\"text-align:right\">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>\n\t</tr>\n\n<?php $i++; ?>\n\n<?php endforeach; ?>\n\n<tr>\n\t<td colspan=\"2\"> </td>\n\t<td class=\"right\"><strong>Total</strong></td>\n\t<td class=\"right\">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>\n</tr>\n\n</table>\n\n<p><?php echo form_submit('', 'Update your Cart'); ?></p>\n",
+		"body": "\necho form_open('${1:path/to/controller/update/function}'); ?>\n\n<table cellpadding=\"6\" cellspacing=\"1\" style=\"width:100%\" border=\"0\">\n\n<tr>\n\t<th>QTY</th>\n\t<th>Item Description</th>\n\t<th style=\"text-align:right\">Item Price</th>\n\t<th style=\"text-align:right\">Sub-Total</th>\n</tr>\n\n<?php $$i = 1; ?>\n\n<?php foreach ($$this->cart->contents() as $$items): ?>\n\n\t<?php echo form_hidden($$i.'[rowid]', $$items['rowid']); ?>\n\n\t<tr>\n\t\t<td><?php echo form_input(array('${3:name}' => $$i.'[qty]', 'value' => $$items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>\n\t\t<td>\n\t\t<?php echo $$items['name']; ?>\n\n\t\t\t<?php if ($$this->cart->has_options($$items['rowid']) == TRUE): ?>\n\n\t\t\t\t<p>\n\t\t\t\t\t<?php foreach ($$this->cart->product_options($$items['rowid']) as $option_name => $option_value): ?>\n\n\t\t\t\t\t\t<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />\n\n\t\t\t\t\t<?php endforeach; ?>\n\t\t\t\t</p>\n\n\t\t\t<?php endif; ?>\n\n\t\t</td>\n\t\t<td style=\"text-align:right\"><?php echo $$this->cart->format_number($$items['price']); ?></td>\n\t\t<td style=\"text-align:right\">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>\n\t</tr>\n\n<?php $$i++; ?>\n\n<?php endforeach; ?>\n\n<tr>\n\t<td colspan=\"2\"> </td>\n\t<td class=\"right\"><strong>Total</strong></td>\n\t<td class=\"right\">$<?php echo $$this->cart->format_number($$this->cart->total()); ?></td>\n</tr>\n\n</table>\n\n<p><?php echo form_submit('', 'Update your Cart'); ?></p>\n",
 		"description": "CI - Simple Cart Template"
 	},
 	"echopre": {
 		"prefix": "echopre",
 		"body": "\necho \"<pre>\";\nprint_r ($${1:variable});\necho \"</pre>\";\n",
-		"description": ""
+		"description": "Pre tag in echo"
 	},
 	"email": {
 		"prefix": "email",
-		"body": "$$this->load->library('email');\n\n$$this->email->from('${1:email@email.com}', '${2:Name}');\n$$this->email->to('${3:someone@example.com}');\n$$this->email->cc('${4:another@example.com}');\n$$this->email->bcc('${5:and@another.com}');\n\n$$this->email->subject('${6:subject}');\n$$this->email->message('${7:message}');\n\n$$this->email->send();\n\necho $this->email->print_debugger();\n",
+		"body": "$$this->load->library('email');\n\n$$this->email->from('${1:email@email.com}', '${2:Name}');\n$$this->email->to('${3:someone@example.com}');\n$$this->email->cc('${4:another@example.com}');\n$$this->email->bcc('${5:and@another.com}');\n\n$$this->email->subject('${6:subject}');\n$$this->email->message('${7:message}');\n\n$$this->email->send();\n\necho $$this->email->print_debugger();\n",
 		"description": "CI - Email Boilerplate"
 	},
 	"fetch_class": {
@@ -216,7 +216,7 @@
 	},
 	"fetch_module": {
 		"prefix": "fetch_module",
-		"body": "$$this->router->fetch_module('');\n",
+		"body": "$$this->router->fetch_module($1);\n",
 		"description": "CI - Fetch Module"
 	},
 	"flashdata": {
@@ -246,17 +246,17 @@
 	},
 	"form_input": {
 		"prefix": "form_input",
-		"body": "\nform_input('${1:name}', '${2:value}'${3:, $attributes});\n",
+		"body": "\nform_input('${1:name}', '${2:value}'${3:, $$attributes});\n",
 		"description": "CI - Form Helper - Input Field"
 	},
 	"form_label": {
 		"prefix": "form_label",
-		"body": "\nform_label('${1:What is your Name}', '${2:username}'${3:, $attributes});\n",
+		"body": "\nform_label('${1:What is your Name}', '${2:username}'${3:, $$attributes});\n",
 		"description": "CI - Form Helper - Label"
 	},
 	"form_open": {
 		"prefix": "form_open",
-		"body": "\nform_open('${1:url}', '', $hidden);\n",
+		"body": "\nform_open('${1:url}', '$2', $$hidden);\n",
 		"description": "CI - Form Open"
 	},
 	"form_password": {
@@ -286,7 +286,7 @@
 	},
 	"form_validation_run": {
 		"prefix": "form_validation_run",
-		"body": "\nif ($this->form_validation->run() == ${1:TRUE or FALSE}) {\n\t${2:# code...}\n} else {\n\t${3:# code...}\n}\n",
+		"body": "\nif ($$this->form_validation->run() == ${1:TRUE or FALSE}) {\n\t${2:# code...}\n} else {\n\t${3:# code...}\n}\n",
 		"description": "CI - Form Validation Run"
 	},
 	"form_validation_sv": {
@@ -296,7 +296,7 @@
 	},
 	"generate_table": {
 		"prefix": "generate_table",
-		"body": "$$this->load->library('table');\n\n$data = array(\n\tarray('${1:name}', '${2:Color}', '${3:Size}'),\n\tarray('${4:Fred}', '${5:Blue}', '${6:Small}'),\n\tarray('${7:Mary}', '${8:Red}', '${9:Large}'),\n\tarray('${10:John}', '${11:Green}', '${12:Medium}')\n);\n\necho $this->table->generate($data);\n",
+		"body": "$$this->load->library('${1:table}');\n\n$$data = array(\n\tarray('${2:name}', '${3:Color}', '${4:Size}'),\n\tarray('${5:Fred}', '${6:Blue}', '${7:Small}'),\n\tarray('${8:Mary}', '${9:Red}', '${10:Large}'),\n\tarray('${11:John}', '${12:Green}', '${13:Medium}')\n);\n\necho $$this->${1:table}->generate($$data);\n",
 		"description": "CI - Generate Table"
 	},
 	"_get": {
@@ -306,7 +306,7 @@
 	},
 	"get_instance": {
 		"prefix": "get_instance",
-		"body": "\n$${1:CI} =& get_instance();\n",
+		"body": "\n$${1:CI} =& get_instance($2);\n",
 		"description": "CI - Assign the CodeIgniter object to a variable"
 	},
 	"_get_post": {
@@ -316,27 +316,27 @@
 	},
 	"get_request_header": {
 		"prefix": "get_request_header",
-		"body": "$$this->input->get_request_header();\n",
+		"body": "$$this->input->get_request_header($1);\n",
 		"description": "CI - Get request header"
 	},
 	"ip_address": {
 		"prefix": "ip_address",
-		"body": "$$this->input->ip_address();\n",
+		"body": "$$this->input->ip_address($1);\n",
 		"description": "CI - Get ip address"
 	},
 	"is_ajax": {
 		"prefix": "is_ajax",
-		"body": "$$this->input->is_ajax_request()\n",
+		"body": "$$this->input->is_ajax_request($1)\n",
 		"description": "CI - Is ajax request"
 	},
 	"is_cli": {
 		"prefix": "is_cli",
-		"body": "$$this->input->is_cli_request()\n",
+		"body": "$$this->input->is_cli_request($1)\n",
 		"description": "CI - Is CLI request"
 	},
 	"library": {
 		"prefix": "library",
-		"body": "\n<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:LibraryName}}\n{\n\tprotected $ci;\n\n\tpublic function __construct()\n\t{\n        $this->ci =& get_instance();\n\t}\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
+		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:LibraryName}\n{\n\tprotected $$ci;\n\n\tpublic function __construct()\n\t{\n        $$this->$ci =& get_instance();\n\t}\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
 		"description": "CI - New Library"
 	},
 	"load_helper": {
@@ -371,12 +371,12 @@
 	},
 	"migration": {
 		"prefix": "migration",
-		"body": "\n<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass Migration_${1:Class_name}} extends ${2:CI}_Migration {\n\n\tpublic function __construct()\n\t{\n\t\t$this->load->dbforge();${3:\n\t\t$this->load->database();}\n\t}\n\n\tpublic function up() {\n\t\t${4}\n\t}\n\n\tpublic function down() {\n\t\t${5}\n\t}\n\n}\n\n/* End of file $1.php */\n",
+		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass Migration_${1:Class_name} extends ${2:CI}_Migration {\n\n\tpublic function __construct()\n\t{\n\t\t$$this->load->dbforge();${3:\n\t\t$$this->load->database($4);}\n\t}\n\n\tpublic function up() {\n\t\t${5}\n\t}\n\n\tpublic function down() {\n\t\t${6}\n\t}\n\n}\n\n/* End of file $1.php */\n",
 		"description": "CI - Base Migration"
 	},
 	"model": {
 		"prefix": "model",
-		"body": "\n<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:ModelName} extends ${2:CI}_Model {\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
+		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:ModelName} extends ${2:CI}_Model {\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
 		"description": "CI - Base Model"
 	},
 	"output_json": {
@@ -391,32 +391,32 @@
 	},
 	"pagination": {
 		"prefix": "pagination",
-		"body": "$$this->load->library('pagination');\n\n$config['base_url'] = '${1:url}';\n$config['total_rows'] = ${2:100};\n$config['per_page'] = ${3:10};\n$config['uri_segment'] = ${4:3};\n$config['num_links'] = ${4:4};\n$config['full_tag_open'] = '${5:<p>}';\n$config['full_tag_close'] = '${6:</p>}';\n$config['first_link'] = '${7:First}';\n$config['first_tag_open'] = '${8:<div>}';\n$config['first_tag_close'] = '${9:</div>}';\n$config['last_link'] = '${10:Last}';\n$config['last_tag_open'] = '${11:<div>}';\n$config['last_tag_close'] = '${12:</div>}';\n$config['next_link'] = '${13:&gt};';\n$config['next_tag_open'] = '${14:<div>}';\n$config['next_tag_close'] = '${15:</div>}';\n$config['prev_link'] = '${16:&lt;}';\n$config['prev_tag_open'] = '${17:<div>}';\n$config['prev_tag_close'] = '${18:</div>}';\n$config['cur_tag_open'] = '${19:<b>}';\n$config['cur_tag_close'] = '${20:</b>}';\n\n$$this->pagination->initialize($config);\n\necho $this->pagination->create_links();\n",
+		"body": "$$this->load->library('pagination');\n\n$$config['base_url'] = '${1:url}';\n$$config['total_rows'] = ${2:100};\n$$config['per_page'] = ${3:10};\n$$config['uri_segment'] = ${4:3};\n$$config['num_links'] = ${4:4};\n$$config['full_tag_open'] = '${5:<p>}';\n$$config['full_tag_close'] = '${6:</p>}';\n$$config['first_link'] = '${7:First}';\n$$config['first_tag_open'] = '${8:<div>}';\n$$config['first_tag_close'] = '${9:</div>}';\n$$config['last_link'] = '${10:Last}';\n$$config['last_tag_open'] = '${11:<div>}';\n$$config['last_tag_close'] = '${12:</div>}';\n$$config['next_link'] = '${13:&gt};';\n$$config['next_tag_open'] = '${14:<div>}';\n$$config['next_tag_close'] = '${15:</div>}';\n$$config['prev_link'] = '${16:&lt;}';\n$$config['prev_tag_open'] = '${17:<div>}';\n$$config['prev_tag_close'] = '${18:</div>}';\n$$config['cur_tag_open'] = '${19:<b>}';\n$$config['cur_tag_close'] = '${20:</b>}';\n\n$$this->pagination->initialize($$config);\n\necho $$this->pagination->create_links();\n",
 		"description": "CI - Pagination Boilerplate"
 	},
 	"_post": {
 		"prefix": "_post",
-		"body": "$$this->input->post('${1:name}')\n",
+		"body": "$$this->input->post('${1:name}');\n",
 		"description": "CI - $_POST"
 	},
 	"_redirect": {
 		"prefix": "_redirect",
-		"body": "\nredirect('${1:}','location',${2:})\n",
+		"body": "\nredirect('${1:}','location',${2:});\n",
 		"description": "CI - URL Helper - redirect with response code"	
 	},
 	"redirect": {
 		"prefix": "redirect",
-		"body": "\nredirect('${1:}','refresh')\n",
-		"description": "CI - URL Helper - redirect"		
+		"body": "\nredirect('${1:}','refresh');\n",
+		"description": "CI - URL Helper - redirect"
 	},
 	"request_headers": {
 		"prefix": "request_headers",
-		"body": "$$this->input->request_headers()\n",
-		"description": "CI - Request Headers"		
+		"body": "$$this->input->request_headers();\n",
+		"description": "CI - Request Headers"
 	},
 	"run_validation": {
 		"prefix": "run_validation",
-		"body": "$$this->form_validation->run()\n",
+		"body": "$$this->form_validation->run();\n",
 		"description": "CI - Run form validation"		
 	},
 	"_server": {
@@ -436,7 +436,7 @@
 	},
 	"session_set_userdata": {
 		"prefix": "session_set_userdata",
-		"body": "\r\n$array = array(\r\n\t'${1:key}' => '${2:value}'\r\n);\r\n\r$$this->session->set_userdata( $array );\r\n",
+		"body": "\r\n$$array = array(\r\n\t'${1:key}' => '${2:value}'\r\n);\r\n\r$$this->session->set_userdata( $$array );\r\n",
 		"description": "CI - Session - Adding Custom Session Data"
 	},
 	"session_unset_userdata": {
@@ -452,12 +452,12 @@
 	"set_cookie": {
 		"prefix": "set_cookie",
 		"body": "$$this->input->set_cookie('${1:name}', '${2:value}', '${3:expire}', '${4:domain}', '${5:path}','${6:prefix}', '${7:secure}');\n",
-		"description": "CI - Set Cookie"		
+		"description": "CI - Set Cookie"
 	},
 	"set_flashdata": {
 		"prefix": "set_flashdata",
 		"body": "$$this->session->set_flashdata('${1:name}', '${2:value}');\n",
-		"description": "CI - Set flashdata"		
+		"description": "CI - Set flashdata"
 	},
 	"set_json": {
 		"prefix": "set_json",
@@ -476,12 +476,12 @@
 	},
 	"unit_run": {
 		"prefix": "unit_run",
-		"body": "$$this->unit->run(\n\t$result = ${1},\n\t$expected = ${2:TRUE}${3:,\n\t'${1}'}${4:,\n\t\\htmlentities($result).' == '. \\htmlentities($expected)}\n);\n",
-		"description": ""		
+		"body": "$$this->unit->run(\n\t$$result = ${1},\n\t$$expected = ${2:TRUE}${3:,\n\t'${1}'}${4:,\n\t\\htmlentities($$result).' == '. \\htmlentities($$expected)}\n);\n",
+		"description": "CI - Unit Run"		
 	},
 	"upload": {
 		"prefix": "upload",
-		"body": "\n$config['upload_path'] = '${1:./uploads/}';\n$config['allowed_types'] = '${2:gif|jpg|png}';\n$config['max_size']  = '${3:100}';\n$config['max_width']  = '${4:1024}';\n$config['max_height']  = '${5:768}';\n\n$$this->load->library('upload', $config);\n\nif ( ! $this->upload->do_upload()){\n\t$error = array('error' => $this->upload->display_errors());\n}\nelse{\n\t$data = array('upload_data' => $this->upload->data());\n\techo \"success\";\n}\n",
+		"body": "\n$$config['upload_path'] = '${1:./uploads/}';\n$$config['allowed_types'] = '${2:gif|jpg|png}';\n$$config['max_size']  = '${3:100}';\n$$config['max_width']  = '${4:1024}';\n$$config['max_height']  = '${5:768}';\n\n$$this->load->library('upload', $$config);\n\nif ( ! $$this->upload->do_upload()){\n\t$$error = array('error' => $$this->upload->display_errors());\n}\nelse{\n\t$$data = array('upload_data' => $$this->upload->data());\n\techo \"success\";\n}\n",
 		"description": "CI - Upload Boilerplate"		
 	},
 	"uri_segment": {

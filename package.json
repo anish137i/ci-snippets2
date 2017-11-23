@@ -2,7 +2,7 @@
     "name": "ci-snippets2",
     "displayName": "ci-snippets2",
     "description": "Ths is a collection of snippets for the CodeIgniter PHP Framework.",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "Anish-M",
     "engines": {
         "vscode": "^1.12.0"

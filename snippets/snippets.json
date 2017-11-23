@@ -26,22 +26,22 @@
 	},
 	"calendar": {
 		"prefix": "calendar",
-		"body": "$$this->load->library('calendar');\n\n$data = array(\n\t'${1:day}'  => '${2:link}',\n\t'${3:day}'  => '${4:link}'\n);\n\necho $this->calendar->generate(${5:year}, ${6:month}, $data);\n",
+		"body": "$$this->load->library('calendar');\n\n$$data = array(\n\t'${1:day}'  => '${2:link}',\n\t'${3:day}'  => '${4:link}'\n);\n\necho $$this->calendar->generate(${5:year}, ${6:month}, $$data);\n",
 		"description": "CI - Calendar Helper"
 	},
 	"cart_add": {
 		"prefix": "cart_add",
-		"body": "\n$data = array(\n\t'id'      => '${1:sku_123ABC}',\n\t'qty'     => ${2:1},\n\t'price'   => '${3:19.56}',\n\t'name'    => '${4:T-Shirt}',\n\t'options' => array('${5:Size}' => '${6:L}', '${7:Color}' => '${8:Red}')\n);\n\n$$this->cart->insert($data);\n",
+		"body": "\n$$data = array(\n\t'id'      => '${1:sku_123ABC}',\n\t'qty'     => ${2:1},\n\t'price'   => '${3:19.56}',\n\t'name'    => '${4:T-Shirt}',\n\t'options' => array('${5:Size}' => '${6:L}', '${7:Color}' => '${8:Red}')\n);\n\n$$this->cart->insert($$data);\n",
 		"description": "CI - Add to Cart"
 	},
 	"cart_update": {
 		"prefix": "cart_update",
-		"body": "\n$data = array(\n\t'rowid' => '${1:yourid}',\n\t'qty'   => ${2:3}\n);\n\n$$this->cart->update($data);\n",
+		"body": "\n$$data = array(\n\t'rowid' => '${1:yourid}',\n\t'qty'   => ${2:3}\n);\n\n$$this->cart->update($$data);\n",
 		"description": "CI - Update Cart"
 	},
 	"eof": {
 		"prefix": "eof",
-		"body": "\n/* End of file ${1:filename}.php} */\n\n",
+		"body": "\n/* End of file ${1:filename}.php */\n\n",
 		"description": "CI - End of file"
 	},
 	"ciline": {
@@ -71,12 +71,12 @@
 	},
 	"crud": {
 		"prefix": "crud",
-		"body": "\n<?php\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function __construct()\n\t{\n\t\tparent::__construct();\n\t\t${0://Load Dependencies}\n\n\t}\n\n\t// List all your items\n\tpublic function index( $offset = 0 )\n\t{\n\n\t}\n\n\t// Add a new item\n\tpublic function add()\n\t{\n\n\t}\n\n\t//Update one item\n\tpublic function update( $id = NULL )\n\t{\n\n\t}\n\n\t//Delete one item\n\tpublic function delete( $id = NULL )\n\t{\n\n\t}\n}\n\n/* End of file $1.php */\n\n",
+		"body": "\n\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function __construct()\n\t{\n\t\tparent::__construct();\n\t\t${0://Load Dependencies}\n\n\t}\n\n\t// List all your items\n\tpublic function index( $$offset = 0 )\n\t{\n\n\t}\n\n\t// Add a new item\n\tpublic function add()\n\t{\n\n\t}\n\n\t//Update one item\n\tpublic function update( $$id = NULL )\n\t{\n\n\t}\n\n\t//Delete one item\n\tpublic function delete( $$id = NULL )\n\t{\n\n\t}\n}\n\n/* End of file $1.php */\n\n",
 		"description": "CI - Simple CRUD Controller"
 	},
 	"db_affected": {
 		"prefix": "db_affected",
-		"body": "\r$$this->db->affected_rows();\r",
+		"body": "\r$$this->db->affected_rows(${1});\r",
 		"description": "CI - Active Record DB Affected Rows"		
 	},
 	"db_delete": {

@@ -1,503 +1,487 @@
 {
-/*
-	 // Place your snippets for PHP here. Each snippet is defined under a snippet name and has a prefix, body and 
-	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
-	 // Example:
-	 "Print to console": {
-		"prefix": "log",
-		"body": [
-			"console.log('$1');",
-			"$2"
-		],
-		"description": "Log output to console"
-	}
-*/
-
-	"anchor": {
-		"prefix": "anchor",
-		"body": "anchor('${1:url}', '${2:linkname}', '${3:attributes}');",
-		"description": "CI - Anchor Helper"
-	},
-	"ci_base": {
-		"prefix": "ci_base",
-		"body": "base_url('${1:}')",
-		"description": "CI - URL Helper - base_url"
-	},
-	"calendar": {
-		"prefix": "calendar",
-		"body": "$$this->load->library('calendar');\n\n$$data = array(\n\t'${1:day}'  => '${2:link}',\n\t'${3:day}'  => '${4:link}'\n);\n\necho $$this->calendar->generate(${5:year}, ${6:month}, $$data);\n",
-		"description": "CI - Calendar Helper"
-	},
-	"cart_add": {
-		"prefix": "cart_add",
-		"body": "\n$$data = array(\n\t'id'      => '${1:sku_123ABC}',\n\t'qty'     => ${2:1},\n\t'price'   => '${3:19.56}',\n\t'name'    => '${4:T-Shirt}',\n\t'options' => array('${5:Size}' => '${6:L}', '${7:Color}' => '${8:Red}')\n);\n\n$$this->cart->insert($$data);\n",
-		"description": "CI - Add to Cart"
-	},
-	"cart_update": {
-		"prefix": "cart_update",
-		"body": "\n$$data = array(\n\t'rowid' => '${1:yourid}',\n\t'qty'   => ${2:3}\n);\n\n$$this->cart->update($$data);\n",
-		"description": "CI - Update Cart"
-	},
-	"eof": {
-		"prefix": "eof",
-		"body": "\n/* End of file ${1:filename}.php */\n\n",
-		"description": "CI - End of file"
-	},
-	"ciline": {
-		"prefix": "ciline",
-		"body": "// ------------------------------------------------------------------------",
-		"description": "ciline"
-	},
-	"ci_start": {
-		"prefix": "ci_start",
-		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\n$0\n\n/* End of file ${1:filename}.php */\n",
-		"description": "CI - Generic Starter Class"
-	},
-	"construct": {
-		"prefix": "construct",
-		"body": "\npublic function __construct()\n{\n\tparent::__construct();\n\t${0://Do your magic here}\n}\n",
-		"description": "CI - Class Constructor"
-	},
-	"controller": {
-		"prefix": "controller",
-		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function index()\n\t{\n\t\t$0\n\t}\n\n}\n\n/* End of file $1.php */\n",
-		"description": "CI - Base Controller"
-	},
-	"_cookie": {
-		"prefix": "_cookie",
-		"body": "$$this->input->cookie()('${1:name}');",
-		"description": "CI - Cookie"
-	},
-	"crud": {
-		"prefix": "crud",
-		"body": "\n\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function __construct()\n\t{\n\t\tparent::__construct();\n\t\t${0://Load Dependencies}\n\n\t}\n\n\t// List all your items\n\tpublic function index( $$offset = 0 )\n\t{\n\n\t}\n\n\t// Add a new item\n\tpublic function add()\n\t{\n\n\t}\n\n\t//Update one item\n\tpublic function update( $$id = NULL )\n\t{\n\n\t}\n\n\t//Delete one item\n\tpublic function delete( $$id = NULL )\n\t{\n\n\t}\n}\n\n/* End of file $1.php */\n\n",
-		"description": "CI - Simple CRUD Controller"
-	},
-	"db_affected": {
-		"prefix": "db_affected",
-		"body": "\r$$this->db->affected_rows(${1});\r",
-		"description": "CI - Active Record DB Affected Rows"		
-	},
-	"db_delete": {
-		"prefix": "db_delete",
-		"body": "$$this->db->delete('${1:Table}');\n",
-		"description": "CI - Active Record DB Delete"		
-	},
-	"db_free_result": {
-		"prefix": "db_free_result",
-		"body": "\r$${1:Var}->free_result();\r\n",
-		"description": "CI - Active Record DB Free Result"
-	},
-	"db_from": {
-		"prefix": "db_from",
-		"body": "$$this->db->from('${1:Table}');\n",
-		"description": "CI - Active Record DB From"
-	},
-	"db_get": {
-		"prefix": "db_get",
-		"body": "$$this->db->get('${1:Table}'${2:, ${3:limit}, ${4:offset}});\n",
-		"description": "CI - Active Record DB Get"
-	},
-	"db_group": {
-		"prefix": "db_group",
-		"body": "$$this->db->group_by('${1:title}');\n",
-		"description": "CI - Active Record DB Group By"
-	},
-	"db_insert": {
-		"prefix": "db_insert",
-		"body": "$$this->db->insert('${1:Table}', $${2:object});\n",
-		"description": "CI - Active Record DB Insert"
-	},
-	"db_insertbatch": {
-		"prefix": "db_insertbatch",
-		"body": "$$this->db->insert_batch('${1:Table}', $${2:object});\n",
-		"description": "CI - Active Record DB Insert Batch"
-	},
-	"db_insert_id": {
-		"prefix": "db_insert_id",
-		"body": "$$this->db->insert_id($1);\n$2",
-		"description": "CI - Active Record DB Last Inserted Id"
-	},
-	"db_join": {
-		"prefix": "db_join",
-		"body": "$$this->db->join('${1:Table}', '${2:table.column} ${3:=} ${4:table.column}'${5:, 'left'});\n",
-		"description": "CI - Active Record DB Join"
-	},
-	"db_last": {
-		"prefix": "db_last",
-		"body": "$$this->db->last_query($1);\n$2",
-		"description": "CI - Active Record DB Helper Functions"
-	},
-	"db_limit": {
-		"prefix": "db_limit",
-		"body": "$$this->db->limit(${1:num});\n",
-		"description": "CI - Active Record DB Helper Functions"
-	},
-	"db_num_fields": {
-		"prefix": "db_num_fields",
-		"body": "\r\n$${1:Var}->num_fields($2);\r\n",
-		"description": "CI - Active Record DB Num Fields"
-	},
-	"db_num_rows": {
-		"prefix": "db_num_rows",
-		"body": "\r\n$${1:Var}->num_rows($2);\r\n",
-		"description": "CI - Active Record DB Num Rows"
-	},
-	"db_order": {
-		"prefix": "db_order",
-		"body": "$$this->db->order_by('${1:title}', '${2:desc}');\n$3",
-		"description": "CI - Active Record DB Order By"
-	},
-	"db_result": {
-		"prefix": "db_result",
-		"body": "\r\n$${1:Var}->result($2);\r\n$3",
-		"description": "CI - Active Record DB Result"
-	},
-	"db_result_array": {
-		"prefix": "db_result_array",
-		"body": "\r\n$${1:Var}->result_array($2);\r\n",
-		"description": "CI - Active Record DB Result Array"
-	},
-	"db_row": {
-		"prefix": "db_row",
-		"body": "\r\n$${1:Var}->row();\r\n",
-		"description": "CI - Active Record DB Row"
-	},
-	"db_row_array": {
-		"prefix": "db_row_array",
-		"body": "\r\n$${1:Var}->row_array();\r\n",
-		"description": "CI - Active Record DB Row Array"
-	},
-	"db_select": {
-		"prefix": "db_select",
-		"body": "$$this->db->select('${1:field1, field2}');\n",
-		"description": "CI - Active Record DB Select"
-	},
-	"db_truncate": {
-		"prefix": "db_truncate",
-		"body": "$$this->db->truncate('${1:Table}');\n",
-		"description": "CI - Active Record Truncate Table"
-	},
-	"db_update": {
-		"prefix": "db_update",
-		"body": "$$this->db->update('${1:Table}', $${2:object});\n",
-		"description": "CI - Active Record DB Update"
-	},
-	"db_where": {
-		"prefix": "db_where",
-		"body": "$$this->db->where('${1:Field / comparison}', $${2:Value});\n",
-		"description": "CI - Active Record DB Where"
-	},
-	"display_cart": {
-		"prefix": "display_cart",
-		"body": "\necho form_open('${1:path/to/controller/update/function}'); ?>\n\n<table cellpadding=\"6\" cellspacing=\"1\" style=\"width:100%\" border=\"0\">\n\n<tr>\n\t<th>QTY</th>\n\t<th>Item Description</th>\n\t<th style=\"text-align:right\">Item Price</th>\n\t<th style=\"text-align:right\">Sub-Total</th>\n</tr>\n\n<?php $$i = 1; ?>\n\n<?php foreach ($$this->cart->contents() as $$items): ?>\n\n\t<?php echo form_hidden($$i.'[rowid]', $$items['rowid']); ?>\n\n\t<tr>\n\t\t<td><?php echo form_input(array('${3:name}' => $$i.'[qty]', 'value' => $$items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>\n\t\t<td>\n\t\t<?php echo $$items['name']; ?>\n\n\t\t\t<?php if ($$this->cart->has_options($$items['rowid']) == TRUE): ?>\n\n\t\t\t\t<p>\n\t\t\t\t\t<?php foreach ($$this->cart->product_options($$items['rowid']) as $option_name => $option_value): ?>\n\n\t\t\t\t\t\t<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />\n\n\t\t\t\t\t<?php endforeach; ?>\n\t\t\t\t</p>\n\n\t\t\t<?php endif; ?>\n\n\t\t</td>\n\t\t<td style=\"text-align:right\"><?php echo $$this->cart->format_number($$items['price']); ?></td>\n\t\t<td style=\"text-align:right\">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>\n\t</tr>\n\n<?php $$i++; ?>\n\n<?php endforeach; ?>\n\n<tr>\n\t<td colspan=\"2\"> </td>\n\t<td class=\"right\"><strong>Total</strong></td>\n\t<td class=\"right\">$<?php echo $$this->cart->format_number($$this->cart->total()); ?></td>\n</tr>\n\n</table>\n\n<p><?php echo form_submit('', 'Update your Cart'); ?></p>\n",
-		"description": "CI - Simple Cart Template"
-	},
-	"echopre": {
-		"prefix": "echopre",
-		"body": "\necho \"<pre>\";\nprint_r ($${1:variable});\necho \"</pre>\";\n",
-		"description": "Pre tag in echo"
-	},
-	"email": {
-		"prefix": "email",
-		"body": "$$this->load->library('email');\n\n$$this->email->from('${1:email@email.com}', '${2:Name}');\n$$this->email->to('${3:someone@example.com}');\n$$this->email->cc('${4:another@example.com}');\n$$this->email->bcc('${5:and@another.com}');\n\n$$this->email->subject('${6:subject}');\n$$this->email->message('${7:message}');\n\n$$this->email->send();\n\necho $$this->email->print_debugger();\n",
-		"description": "CI - Email Boilerplate"
-	},
-	"fetch_class": {
-		"prefix": "fetch_class",
-		"body": "$$this->router->fetch_class();\n",
-		"description": "CI - Fetch Class"
-	},
-	"fetch_method": {
-		"prefix": "fetch_method",
-		"body": "$$this->router->fetch_method();\n",
-		"description": "CI - Fetch Method"
-	},
-	"fetch_module": {
-		"prefix": "fetch_module",
-		"body": "$$this->router->fetch_module($1);\n",
-		"description": "CI - Fetch Module"
-	},
-	"flashdata": {
-		"prefix": "flashdata",
-		"body": "$$this->session->flashdata('${1:name}');\n",
-		"description": "CI - Flashdata"
-	},
-	"form_checkbox": {
-		"prefix": "form_checkbox",
-		"body": "\nform_checkbox(${1:name}, ${2:value}, TRUE);\n",
-		"description": "CI - Form Helper - Checkbox"
-	},
-	"form_close": {
-		"prefix": "form_close",
-		"body": "\nform_close();\n",
-		"description": "CI - Form Helper - Close"
-	},
-	"form_dropdown": {
-		"prefix": "form_dropdown",
-		"body": "\nform_dropdown('${1:name}', $options, '${2:default}');\n",
-		"description": "CI - Form Helper - Dropdown"
-	},
-	"form_hidden": {
-		"prefix": "form_hidden",
-		"body": "\nform_hidden('${1:name}', '${2:value}');\n",
-		"description": "CI - Form Helper - Hidden Field"
-	},
-	"form_input": {
-		"prefix": "form_input",
-		"body": "\nform_input('${1:name}', '${2:value}'${3:, $$attributes});\n",
-		"description": "CI - Form Helper - Input Field"
-	},
-	"form_label": {
-		"prefix": "form_label",
-		"body": "\nform_label('${1:What is your Name}', '${2:username}'${3:, $$attributes});\n",
-		"description": "CI - Form Helper - Label"
-	},
-	"form_open": {
-		"prefix": "form_open",
-		"body": "\nform_open('${1:url}', '$2', $$hidden);\n",
-		"description": "CI - Form Open"
-	},
-	"form_password": {
-		"prefix": "form_password",
-		"body": "\nform_password('${1:name}', '${2:value}');\n",
-		"description": "CI - Form Helper - Password Field"
-	},
-	"form_submit": {
-		"prefix": "form_submit",
-		"body": "\nform_submit('${1:name}', '${2:value}');\n",
-		"description": "CI - Form Helper - Submit"
-	},
-	"form_textarea": {
-		"prefix": "form_textarea",
-		"body": "\nform_textarea('${1:name}', '${2:value}', '${3:attributs}');\n",
-		"description": "CI - Form Helper - Text Area"
-	},
-	"form_upload": {
-		"prefix": "form_upload",
-		"body": "\nform_upload('${1:name}');\n",
-		"description": "CI - Form Helper - Upload Field"
-	},
-	"form_validation": {
-		"prefix": "form_validation",
-		"body": "$$this->form_validation->set_rules('${1:fieldname}', '${2:fieldlabel}', '${3:trim}|${4:required}|${5:min_length[${6:5}]}|${7:max_length[${8:12}]}');\n",
-		"description": "CI - Form Validation Rule"
-	},
-	"form_validation_run": {
-		"prefix": "form_validation_run",
-		"body": "\nif ($$this->form_validation->run() == ${1:TRUE or FALSE}) {\n\t${2:# code...}\n} else {\n\t${3:# code...}\n}\n",
-		"description": "CI - Form Validation Run"
-	},
-	"form_validation_sv": {
-		"prefix": "form_validation_sv",
-		"body": "$$this->form_validation->set_value('${1:field}')\n",
-		"description": "CI - Form Validation Set Value"
-	},
-	"generate_table": {
-		"prefix": "generate_table",
-		"body": "$$this->load->library('${1:table}');\n\n$$data = array(\n\tarray('${2:name}', '${3:Color}', '${4:Size}'),\n\tarray('${5:Fred}', '${6:Blue}', '${7:Small}'),\n\tarray('${8:Mary}', '${9:Red}', '${10:Large}'),\n\tarray('${11:John}', '${12:Green}', '${13:Medium}')\n);\n\necho $$this->${1:table}->generate($$data);\n",
-		"description": "CI - Generate Table"
-	},
-	"_get": {
-		"prefix": "_get",
-		"body": "$$this->input->get('${1:name}')\n",
-		"description": "CI - $_GET"
-	},
-	"get_instance": {
-		"prefix": "get_instance",
-		"body": "\n$${1:CI} =& get_instance($2);\n",
-		"description": "CI - Assign the CodeIgniter object to a variable"
-	},
-	"_get_post": {
-		"prefix": "_get_post",
-		"body": "$$this->input->get_post('${1:name}');\n",
-		"description": "CI - $_GET / $_POST"
-	},
-	"get_request_header": {
-		"prefix": "get_request_header",
-		"body": "$$this->input->get_request_header($1);\n",
-		"description": "CI - Get request header"
-	},
-	"ip_address": {
-		"prefix": "ip_address",
-		"body": "$$this->input->ip_address($1);\n",
-		"description": "CI - Get ip address"
-	},
-	"is_ajax": {
-		"prefix": "is_ajax",
-		"body": "$$this->input->is_ajax_request($1)\n",
-		"description": "CI - Is ajax request"
-	},
-	"is_cli": {
-		"prefix": "is_cli",
-		"body": "$$this->input->is_cli_request($1)\n",
-		"description": "CI - Is CLI request"
-	},
-	"library": {
-		"prefix": "library",
-		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:LibraryName}\n{\n\tprotected $$ci;\n\n\tpublic function __construct()\n\t{\n        $$this->$ci =& get_instance();\n\t}\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
-		"description": "CI - New Library"
-	},
-	"load_helper": {
-		"prefix": "load_helper",
-		"body": "$$this->load->helper('${1:Helper Name}');\n",
-		"description": "CI - Load Helper File"
-	},
-	"load_library": {
-		"prefix": "load_library",
-		"body": "$$this->load->library('${1:Library Name}'${2:, $${3:config}});\n",
-		"description": "CI - Load Library"
-	},
-	"load_model": {
-		"prefix": "load_model",
-		"body": "$$this->load->model('${1:Model File}');\n",
-		"description": "CI - Load Model"
-	},
-	"load_module": {
-		"prefix": "load_module",
-		"body": "$$this->load->module('${1:Module Directory/Name}');\n",
-		"description": "HMVC CI - Load Module Controller"
-	},
-	"load_view": {
-		"prefix": "load_view",
-		"body": "$$this->load->view('${1:View File}'${2:, $${4:data}}${3:, FALSE});\n",
-		"description": "CI - Load View"
-	},
-	"log": {
-		"prefix": "log",
-		"body": "\nlog_message('${1:error}','${2:message}');\n",
-		"description": "CI - Log Message"
-	},
-	"migration": {
-		"prefix": "migration",
-		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass Migration_${1:Class_name} extends ${2:CI}_Migration {\n\n\tpublic function __construct()\n\t{\n\t\t$$this->load->dbforge();${3:\n\t\t$$this->load->database($4);}\n\t}\n\n\tpublic function up() {\n\t\t${5}\n\t}\n\n\tpublic function down() {\n\t\t${6}\n\t}\n\n}\n\n/* End of file $1.php */\n",
-		"description": "CI - Base Migration"
-	},
-	"model": {
-		"prefix": "model",
-		"body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:ModelName} extends ${2:CI}_Model {\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
-		"description": "CI - Base Model"
-	},
-	"output_json": {
-		"prefix": "output_json",
-		"body": "$$this->output->set_content_type('application/json')->set_output(json_encode(${1:$json}));\n",
-		"description": "CI - output Json"
-	},
-	"output_profiler": {
-		"prefix": "output_profiler",
-		"body": "$$this->output->enable_profiler(${1:TRUE});\n",
-		"description": "CI - Enable Profiler"
-	},
-	"pagination": {
-		"prefix": "pagination",
-		"body": "$$this->load->library('pagination');\n\n$$config['base_url'] = '${1:url}';\n$$config['total_rows'] = ${2:100};\n$$config['per_page'] = ${3:10};\n$$config['uri_segment'] = ${4:3};\n$$config['num_links'] = ${4:4};\n$$config['full_tag_open'] = '${5:<p>}';\n$$config['full_tag_close'] = '${6:</p>}';\n$$config['first_link'] = '${7:First}';\n$$config['first_tag_open'] = '${8:<div>}';\n$$config['first_tag_close'] = '${9:</div>}';\n$$config['last_link'] = '${10:Last}';\n$$config['last_tag_open'] = '${11:<div>}';\n$$config['last_tag_close'] = '${12:</div>}';\n$$config['next_link'] = '${13:&gt};';\n$$config['next_tag_open'] = '${14:<div>}';\n$$config['next_tag_close'] = '${15:</div>}';\n$$config['prev_link'] = '${16:&lt;}';\n$$config['prev_tag_open'] = '${17:<div>}';\n$$config['prev_tag_close'] = '${18:</div>}';\n$$config['cur_tag_open'] = '${19:<b>}';\n$$config['cur_tag_close'] = '${20:</b>}';\n\n$$this->pagination->initialize($$config);\n\necho $$this->pagination->create_links();\n",
-		"description": "CI - Pagination Boilerplate"
-	},
-	"_post": {
-		"prefix": "_post",
-		"body": "$$this->input->post('${1:name}');\n",
-		"description": "CI - $_POST"
-	},
-	"_redirect": {
-		"prefix": "_redirect",
-		"body": "\nredirect('${1:}','location',${2:});\n",
-		"description": "CI - URL Helper - redirect with response code"	
-	},
-	"redirect": {
-		"prefix": "redirect",
-		"body": "\nredirect('${1:}','refresh');\n",
-		"description": "CI - URL Helper - redirect"
-	},
-	"request_headers": {
-		"prefix": "request_headers",
-		"body": "$$this->input->request_headers();\n",
-		"description": "CI - Request Headers"
-	},
-	"run_validation": {
-		"prefix": "run_validation",
-		"body": "$$this->form_validation->run();\n",
-		"description": "CI - Run form validation"		
-	},
-	"_server": {
-		"prefix": "_server",
-		"body": "$$this->input->server('${1:name}');\n",
-		"description": "CI - $_SERVER"		
-	},
-	"session_all_userdata": {
-		"prefix": "session_all_userdata",
-		"body": "\r$$this->session->all_userdata();\r\n",
-		"description": "CI - Session - Retrieving All Session Data"
-	},
-	"session_sess_destroy": {
-		"prefix": "session_sess_destroy",
-		"body": "\r$$this->session->sess_destroy();\r\n",
-		"description": "CI - Session - Destroying a Session"		
-	},
-	"session_set_userdata": {
-		"prefix": "session_set_userdata",
-		"body": "\r\n$$array = array(\r\n\t'${1:key}' => '${2:value}'\r\n);\r\n\r$$this->session->set_userdata( $$array );\r\n",
-		"description": "CI - Session - Adding Custom Session Data"
-	},
-	"session_unset_userdata": {
-		"prefix": "session_unset_userdata",
-		"body": "\r$$this->session->unset_userdata('${1:some_name}');\r\n",
-		"description": "CI - Session - Removing Session Data"		
-	},
-	"session_userdata": {
-		"prefix": "session_userdata",
-		"body": "\r$$this->session->userdata('${1:item}');\r\n",
-		"description": "CI - Session - Retrieving Session Data"		
-	},
-	"set_cookie": {
-		"prefix": "set_cookie",
-		"body": "$$this->input->set_cookie('${1:name}', '${2:value}', '${3:expire}', '${4:domain}', '${5:path}','${6:prefix}', '${7:secure}');\n",
-		"description": "CI - Set Cookie"
-	},
-	"set_flashdata": {
-		"prefix": "set_flashdata",
-		"body": "$$this->session->set_flashdata('${1:name}', '${2:value}');\n",
-		"description": "CI - Set flashdata"
-	},
-	"set_json": {
-		"prefix": "set_json",
-		"body": "$$this->output->set_content_type('application/json');\n",
-		"description": "CI - Set content type to json"
-	},
-	"site": {
-		"prefix": "site",
-		"body": "\nsite_url('${1:}')\n",
-		"description": "CI - URL Helper - site_url"
-	},
-	"th": {
-		"prefix": "th",
-		"body": "$${1:this}->$2",
-		"description": "PHP - $this or other object use"		
-	},
-	"unit_run": {
-		"prefix": "unit_run",
-		"body": "$$this->unit->run(\n\t$$result = ${1},\n\t$$expected = ${2:TRUE}${3:,\n\t'${1}'}${4:,\n\t\\htmlentities($$result).' == '. \\htmlentities($$expected)}\n);\n",
-		"description": "CI - Unit Run"		
-	},
-	"upload": {
-		"prefix": "upload",
-		"body": "\n$$config['upload_path'] = '${1:./uploads/}';\n$$config['allowed_types'] = '${2:gif|jpg|png}';\n$$config['max_size']  = '${3:100}';\n$$config['max_width']  = '${4:1024}';\n$$config['max_height']  = '${5:768}';\n\n$$this->load->library('upload', $$config);\n\nif ( ! $$this->upload->do_upload()){\n\t$$error = array('error' => $$this->upload->display_errors());\n}\nelse{\n\t$$data = array('upload_data' => $$this->upload->data());\n\techo \"success\";\n}\n",
-		"description": "CI - Upload Boilerplate"		
-	},
-	"uri_segment": {
-		"prefix": "uri_segment",
-		"body": "$$this->uri->segment(${1:3})\n",
-		"description": "CI - URI Segment"
-	},
-	"user_agent": {
-		"prefix": "user_agent",
-		"body": "$$this->input->user_agent()\n",
-		"description": "CI - Get user agent"
-	},
-	"valid_ip": {
-		"prefix": "valid_ip",
-		"body": "$$this->input->valid_ip('${1:ip}')\n",
-		"description": "CI - Valid IP"
-	}
-
+  "anchor": {
+    "prefix": "anchor",
+    "body": "anchor('${1:url}', '${2:linkname}', '${3:attributes}');",
+    "description": "CI - Creates a standard HTML anchor link based on your local site URL."
+  },
+  "ci_base": {
+    "prefix": "ci_base",
+    "body": "base_url('${1:}')",
+    "description": "CI - Returns your site base URL, as specified in your config file"
+  },
+  "calendar": {
+    "prefix": "calendar",
+    "body": "$$this->load->library('calendar');\n\n$$data = array(\n\t'${1:day}'  => '${2:link}',\n\t'${3:day}'  => '${4:link}'\n);\n\necho $$this->calendar->generate(${5:year}, ${6:month}, $$data);\n",
+    "description": "CI - The Calendar class enables you to dynamically create calendars."
+  },
+  "cart_add": {
+    "prefix": "cart_add",
+    "body": "\n$$data = array(\n\t'id'      => '${1:sku_123ABC}',\n\t'qty'     => ${2:1},\n\t'price'   => '${3:19.56}',\n\t'name'    => '${4:T-Shirt}',\n\t'options' => array('${5:Size}' => '${6:L}', '${7:Color}' => '${8:Red}')\n);\n\n$$this->cart->insert($$data);\n",
+    "description": "CI - To add an item to the shopping cart, simply pass an array with the product information to the cart"
+  },
+  "cart_update": {
+    "prefix": "cart_update",
+    "body": "\n$$data = array(\n\t'rowid' => '${1:yourid}',\n\t'qty'   => ${2:3}\n);\n\n$$this->cart->update($$data);\n",
+    "description": "CI - To update the information in your cart"
+  },
+  "eof": {
+    "prefix": "eof",
+    "body": "\n/* End of file ${1:filename}.php */\n\n",
+    "description": "CI - Add End of file with file name"
+  },
+  "ciline": {
+    "prefix": "ciline",
+    "body": "// ------------------------------------------------------------------------",
+    "description": "CI - Add Comment Line"
+  },
+  "ci_start": {
+    "prefix": "ci_start",
+    "body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\n$0\n\n/* End of file ${1:filename}.php */\n",
+    "description": "Generic Starter Class for CI"
+  },
+  "construct": {
+    "prefix": "construct",
+    "body": "\npublic function __construct()\n{\n\tparent::__construct();\n\t${0://Do your magic here}\n}\n",
+    "description": "CI - Constructors are useful if you need to set some default values."
+  },
+  "controller": {
+    "prefix": "controller",
+    "body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function index()\n\t{\n\t\t$0\n\t}\n\n}\n\n/* End of file $1.php */\n",
+    "description": "CI - Add Controllers are the heart of your application, as they determine how HTTP requests should be handled."
+  },
+  "_cookie": {
+    "prefix": "_cookie",
+    "body": "$$this->input->cookie()('${1:name}');",
+    "description": "CI - CodeIgniter comes with helper methods that let you fetch COOKIE "
+  },
+  "crud": {
+    "prefix": "crud",
+    "body": "\n\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:Controllername} extends ${2:CI}_Controller {\n\n\tpublic function __construct()\n\t{\n\t\tparent::__construct();\n\t\t${0://Load Dependencies}\n\n\t}\n\n\t// List all your items\n\tpublic function index( $$offset = 0 )\n\t{\n\n\t}\n\n\t// Add a new item\n\tpublic function add()\n\t{\n\n\t}\n\n\t//Update one item\n\tpublic function update( $$id = NULL )\n\t{\n\n\t}\n\n\t//Delete one item\n\tpublic function delete( $$id = NULL )\n\t{\n\n\t}\n}\n\n/* End of file $1.php */\n\n",
+    "description": "CI - Create Simple CRUD Controller"
+  },
+  "db_affected": {
+    "prefix": "db_affected",
+    "body": "\r$$this->db->affected_rows(${1});\r",
+    "description": "CI - Useful for checking how much rows were created, updated or deleted during the last executed query."
+  },
+  "db_delete": {
+    "prefix": "db_delete",
+    "body": "$$this->db->delete('${1:Table}');\n",
+    "description": "CI - Active Record DB Delete"
+  },
+  "db_free_result": {
+    "prefix": "db_free_result",
+    "body": "\r$${1:Var}->free_result();\r\n",
+    "description": "CI - Active Record DB Free Result"
+  },
+  "db_from": {
+    "prefix": "db_from",
+    "body": "$$this->db->from('${1:Table}');\n",
+    "description": "CI - Active Record DB From"
+  },
+  "db_get": {
+    "prefix": "db_get",
+    "body": "$$this->db->get('${1:Table}'${2:, ${3:limit}, ${4:offset}});\n",
+    "description": "CI - Active Record DB Get"
+  },
+  "db_group": {
+    "prefix": "db_group",
+    "body": "$$this->db->group_by('${1:title}');\n",
+    "description": "CI - Active Record DB Group By"
+  },
+  "db_insert": {
+    "prefix": "db_insert",
+    "body": "$$this->db->insert('${1:Table}', $${2:object});\n",
+    "description": "CI - Active Record DB Insert"
+  },
+  "db_insertbatch": {
+    "prefix": "db_insertbatch",
+    "body": "$$this->db->insert_batch('${1:Table}', $${2:object});\n",
+    "description": "CI - Active Record DB Insert Batch"
+  },
+  "db_insert_id": {
+    "prefix": "db_insert_id",
+    "body": "$$this->db->insert_id($1);\n$2",
+    "description": "CI - Active Record DB Last Inserted Id"
+  },
+  "db_join": {
+    "prefix": "db_join",
+    "body": "$$this->db->join('${1:Table}', '${2:table.column} ${3:=} ${4:table.column}'${5:, 'left'});\n",
+    "description": "CI - Active Record DB Join"
+  },
+  "db_last": {
+    "prefix": "db_last",
+    "body": "$$this->db->last_query($1);\n$2",
+    "description": "CI - Active Record DB Helper Functions"
+  },
+  "db_limit": {
+    "prefix": "db_limit",
+    "body": "$$this->db->limit(${1:num});\n",
+    "description": "CI - Active Record DB Helper Functions"
+  },
+  "db_num_fields": {
+    "prefix": "db_num_fields",
+    "body": "\r\n$${1:Var}->num_fields($2);\r\n",
+    "description": "CI - Active Record DB Num Fields"
+  },
+  "db_num_rows": {
+    "prefix": "db_num_rows",
+    "body": "\r\n$${1:Var}->num_rows($2);\r\n",
+    "description": "CI - Active Record DB Num Rows"
+  },
+  "db_order": {
+    "prefix": "db_order",
+    "body": "$$this->db->order_by('${1:title}', '${2:desc}');\n$3",
+    "description": "CI - Active Record DB Order By"
+  },
+  "db_result": {
+    "prefix": "db_result",
+    "body": "\r\n$${1:Var}->result($2);\r\n$3",
+    "description": "CI - Active Record DB Result"
+  },
+  "db_result_array": {
+    "prefix": "db_result_array",
+    "body": "\r\n$${1:Var}->result_array($2);\r\n",
+    "description": "CI - Active Record DB Result Array"
+  },
+  "db_row": {
+    "prefix": "db_row",
+    "body": "\r\n$${1:Var}->row();\r\n",
+    "description": "CI - Active Record DB Row"
+  },
+  "db_row_array": {
+    "prefix": "db_row_array",
+    "body": "\r\n$${1:Var}->row_array();\r\n",
+    "description": "CI - Active Record DB Row Array"
+  },
+  "db_select": {
+    "prefix": "db_select",
+    "body": "$$this->db->select('${1:field1, field2}');\n",
+    "description": "CI - Active Record DB Select"
+  },
+  "db_truncate": {
+    "prefix": "db_truncate",
+    "body": "$$this->db->truncate('${1:Table}');\n",
+    "description": "CI - Active Record Truncate Table"
+  },
+  "db_update": {
+    "prefix": "db_update",
+    "body": "$$this->db->update('${1:Table}', $${2:object});\n",
+    "description": "CI - Active Record DB Update"
+  },
+  "db_where": {
+    "prefix": "db_where",
+    "body": "$$this->db->where('${1:Field / comparison}', $${2:Value});\n",
+    "description": "CI - Active Record DB Where"
+  },
+  "display_cart": {
+    "prefix": "display_cart",
+    "body": "\necho form_open('${1:path/to/controller/update/function}'); ?>\n\n<table cellpadding=\"6\" cellspacing=\"1\" style=\"width:100%\" border=\"0\">\n\n<tr>\n\t<th>QTY</th>\n\t<th>Item Description</th>\n\t<th style=\"text-align:right\">Item Price</th>\n\t<th style=\"text-align:right\">Sub-Total</th>\n</tr>\n\n<?php $$i = 1; ?>\n\n<?php foreach ($$this->cart->contents() as $$items): ?>\n\n\t<?php echo form_hidden($$i.'[rowid]', $$items['rowid']); ?>\n\n\t<tr>\n\t\t<td><?php echo form_input(array('${3:name}' => $$i.'[qty]', 'value' => $$items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>\n\t\t<td>\n\t\t<?php echo $$items['name']; ?>\n\n\t\t\t<?php if ($$this->cart->has_options($$items['rowid']) == TRUE): ?>\n\n\t\t\t\t<p>\n\t\t\t\t\t<?php foreach ($$this->cart->product_options($$items['rowid']) as $option_name => $option_value): ?>\n\n\t\t\t\t\t\t<strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />\n\n\t\t\t\t\t<?php endforeach; ?>\n\t\t\t\t</p>\n\n\t\t\t<?php endif; ?>\n\n\t\t</td>\n\t\t<td style=\"text-align:right\"><?php echo $$this->cart->format_number($$items['price']); ?></td>\n\t\t<td style=\"text-align:right\">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>\n\t</tr>\n\n<?php $$i++; ?>\n\n<?php endforeach; ?>\n\n<tr>\n\t<td colspan=\"2\"> </td>\n\t<td class=\"right\"><strong>Total</strong></td>\n\t<td class=\"right\">$<?php echo $$this->cart->format_number($$this->cart->total()); ?></td>\n</tr>\n\n</table>\n\n<p><?php echo form_submit('', 'Update your Cart'); ?></p>\n",
+    "description": "CI - Create Simple Cart Template"
+  },
+  "echopre": {
+    "prefix": "echopre",
+    "body": "\necho \"<pre>\";\nprint_r ($${1:variable});\necho \"</pre>\";\n",
+    "description": "CI - Pre tag in echo"
+  },
+  "email": {
+    "prefix": "email",
+    "body": "$$this->load->library('email');\n\n$$this->email->from('${1:email@email.com}', '${2:Name}');\n$$this->email->to('${3:someone@example.com}');\n$$this->email->cc('${4:another@example.com}');\n$$this->email->bcc('${5:and@another.com}');\n\n$$this->email->subject('${6:subject}');\n$$this->email->message('${7:message}');\n\n$$this->email->send();\n\necho $$this->email->print_debugger();\n",
+    "description": "CI - Create Simple Email Boilerplate"
+  },
+  "fetch_class": {
+    "prefix": "fetch_class",
+    "body": "$$this->router->fetch_class();\n",
+    "description": "CI - Fetch Class"
+  },
+  "fetch_method": {
+    "prefix": "fetch_method",
+    "body": "$$this->router->fetch_method();\n",
+    "description": "CI - Fetch Method"
+  },
+  "fetch_module": {
+    "prefix": "fetch_module",
+    "body": "$$this->router->fetch_module($1);\n",
+    "description": "CI - Fetch Module"
+  },
+  "flashdata": {
+    "prefix": "flashdata",
+    "body": "$$this->session->flashdata('${1:name}');\n",
+    "description": "CI - Flashdata Helper"
+  },
+  "form_checkbox": {
+    "prefix": "form_checkbox",
+    "body": "\nform_checkbox(${1:name}, ${2:value}, TRUE);\n",
+    "description": "CI - Form Helper - Checkbox"
+  },
+  "form_close": {
+    "prefix": "form_close",
+    "body": "\nform_close();\n",
+    "description": "CI - Form Helper - Close"
+  },
+  "form_dropdown": {
+    "prefix": "form_dropdown",
+    "body": "\nform_dropdown('${1:name}', $options, '${2:default}');\n",
+    "description": "CI - Form Helper - Dropdown"
+  },
+  "form_hidden": {
+    "prefix": "form_hidden",
+    "body": "\nform_hidden('${1:name}', '${2:value}');\n",
+    "description": "CI - Form Helper - Hidden Field"
+  },
+  "form_input": {
+    "prefix": "form_input",
+    "body": "\nform_input('${1:name}', '${2:value}'${3:, $$attributes});\n",
+    "description": "CI - Form Helper - Input Field"
+  },
+  "form_label": {
+    "prefix": "form_label",
+    "body": "\nform_label('${1:What is your Name}', '${2:username}'${3:, $$attributes});\n",
+    "description": "CI - Form Helper - Label"
+  },
+  "form_open": {
+    "prefix": "form_open",
+    "body": "\nform_open('${1:url}', '$2', $$hidden);\n",
+    "description": "CI - Form Open"
+  },
+  "form_password": {
+    "prefix": "form_password",
+    "body": "\nform_password('${1:name}', '${2:value}');\n",
+    "description": "CI - Form Helper - Password Field"
+  },
+  "form_submit": {
+    "prefix": "form_submit",
+    "body": "\nform_submit('${1:name}', '${2:value}');\n",
+    "description": "CI - Form Helper - Submit"
+  },
+  "form_textarea": {
+    "prefix": "form_textarea",
+    "body": "\nform_textarea('${1:name}', '${2:value}', '${3:attributs}');\n",
+    "description": "CI - Form Helper - Text Area"
+  },
+  "form_upload": {
+    "prefix": "form_upload",
+    "body": "\nform_upload('${1:name}');\n",
+    "description": "CI - Form Helper - Upload Field"
+  },
+  "form_validation": {
+    "prefix": "form_validation",
+    "body": "$$this->form_validation->set_rules('${1:fieldname}', '${2:fieldlabel}', '${3:trim}|${4:required}|${5:min_length[${6:5}]}|${7:max_length[${8:12}]}');\n",
+    "description": "CI - Form Validation Rule"
+  },
+  "form_validation_run": {
+    "prefix": "form_validation_run",
+    "body": "\nif ($$this->form_validation->run() == ${1:TRUE or FALSE}) {\n\t${2:# code...}\n} else {\n\t${3:# code...}\n}\n",
+    "description": "CI - Form Validation Run"
+  },
+  "form_validation_sv": {
+    "prefix": "form_validation_sv",
+    "body": "$$this->form_validation->set_value('${1:field}')\n",
+    "description": "CI - Form Validation Set Value"
+  },
+  "generate_table": {
+    "prefix": "generate_table",
+    "body": "$$this->load->library('${1:table}');\n\n$$data = array(\n\tarray('${2:name}', '${3:Color}', '${4:Size}'),\n\tarray('${5:Fred}', '${6:Blue}', '${7:Small}'),\n\tarray('${8:Mary}', '${9:Red}', '${10:Large}'),\n\tarray('${11:John}', '${12:Green}', '${13:Medium}')\n);\n\necho $$this->${1:table}->generate($$data);\n",
+    "description": "CI - Generate Table"
+  },
+  "_get": {
+    "prefix": "_get",
+    "body": "$$this->input->get('${1:name}')\n",
+    "description": "CI - $_GET"
+  },
+  "get_instance": {
+    "prefix": "get_instance",
+    "body": "\n$${1:CI} =& get_instance($2);\n",
+    "description": "CI - Assign the CodeIgniter object to a variable"
+  },
+  "_get_post": {
+    "prefix": "_get_post",
+    "body": "$$this->input->get_post('${1:name}');\n",
+    "description": "CI - $_GET / $_POST"
+  },
+  "get_request_header": {
+    "prefix": "get_request_header",
+    "body": "$$this->input->get_request_header($1);\n",
+    "description": "CI - Get request header"
+  },
+  "ip_address": {
+    "prefix": "ip_address",
+    "body": "$$this->input->ip_address($1);\n",
+    "description": "CI - Get ip address"
+  },
+  "is_ajax": {
+    "prefix": "is_ajax",
+    "body": "$$this->input->is_ajax_request($1)\n",
+    "description": "CI - Is ajax request"
+  },
+  "is_cli": {
+    "prefix": "is_cli",
+    "body": "$$this->input->is_cli_request($1)\n",
+    "description": "CI - Is CLI request"
+  },
+  "library": {
+    "prefix": "library",
+    "body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:LibraryName}\n{\n\tprotected $$ci;\n\n\tpublic function __construct()\n\t{\n        $$this->$ci =& get_instance();\n\t}\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
+    "description": "CI - Create New Library"
+  },
+  "load_helper": {
+    "prefix": "load_helper",
+    "body": "$$this->load->helper('${1:Helper Name}');\n",
+    "description": "CI - Load Helper File"
+  },
+  "load_library": {
+    "prefix": "load_library",
+    "body": "$$this->load->library('${1:Library Name}'${2:, $${3:config}});\n",
+    "description": "CI - Load Library"
+  },
+  "load_model": {
+    "prefix": "load_model",
+    "body": "$$this->load->model('${1:Model File}');\n",
+    "description": "CI - Load Model"
+  },
+  "load_module": {
+    "prefix": "load_module",
+    "body": "$$this->load->module('${1:Module Directory/Name}');\n",
+    "description": "HMVC CI - Load Module Controller"
+  },
+  "load_view": {
+    "prefix": "load_view",
+    "body": "$$this->load->view('${1:View File}'${2:, $${4:data}}${3:, FALSE});\n",
+    "description": "CI - Load View"
+  },
+  "log": {
+    "prefix": "log",
+    "body": "\nlog_message('${1:error}','${2:message}');\n",
+    "description": "CI - Log Message"
+  },
+  "migration": {
+    "prefix": "migration",
+    "body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass Migration_${1:Class_name} extends ${2:CI}_Migration {\n\n\tpublic function __construct()\n\t{\n\t\t$$this->load->dbforge();${3:\n\t\t$$this->load->database($4);}\n\t}\n\n\tpublic function up() {\n\t\t${5}\n\t}\n\n\tpublic function down() {\n\t\t${6}\n\t}\n\n}\n\n/* End of file $1.php */\n",
+    "description": "CI - Create Migration Base"
+  },
+  "model": {
+    "prefix": "model",
+    "body": "\ndefined('BASEPATH') OR exit('No direct script access allowed');\n\nclass ${1:ModelName} extends ${2:CI}_Model {\n\n\t$0\n\n}\n\n/* End of file $1.php */\n",
+    "description": "CI - Create Model Base"
+  },
+  "output_json": {
+    "prefix": "output_json",
+    "body": "$$this->output->set_content_type('application/json')->set_output(json_encode(${1:$json}));\n",
+    "description": "CI - Set Json output"
+  },
+  "output_profiler": {
+    "prefix": "output_profiler",
+    "body": "$$this->output->enable_profiler(${1:TRUE});\n",
+    "description": "CI - Enable Profiler"
+  },
+  "pagination": {
+    "prefix": "pagination",
+    "body": "$$this->load->library('pagination');\n\n$$config['base_url'] = '${1:url}';\n$$config['total_rows'] = ${2:100};\n$$config['per_page'] = ${3:10};\n$$config['uri_segment'] = ${4:3};\n$$config['num_links'] = ${4:4};\n$$config['full_tag_open'] = '${5:<p>}';\n$$config['full_tag_close'] = '${6:</p>}';\n$$config['first_link'] = '${7:First}';\n$$config['first_tag_open'] = '${8:<div>}';\n$$config['first_tag_close'] = '${9:</div>}';\n$$config['last_link'] = '${10:Last}';\n$$config['last_tag_open'] = '${11:<div>}';\n$$config['last_tag_close'] = '${12:</div>}';\n$$config['next_link'] = '${13:&gt};';\n$$config['next_tag_open'] = '${14:<div>}';\n$$config['next_tag_close'] = '${15:</div>}';\n$$config['prev_link'] = '${16:&lt;}';\n$$config['prev_tag_open'] = '${17:<div>}';\n$$config['prev_tag_close'] = '${18:</div>}';\n$$config['cur_tag_open'] = '${19:<b>}';\n$$config['cur_tag_close'] = '${20:</b>}';\n\n$$this->pagination->initialize($$config);\n\necho $$this->pagination->create_links();\n",
+    "description": "CI - Create Pagination Boilerplate"
+  },
+  "_post": {
+    "prefix": "_post",
+    "body": "$$this->input->post('${1:name}');\n",
+    "description": "CI - Add $_POST for Input"
+  },
+  "_redirect": {
+    "prefix": "_redirect",
+    "body": "\nredirect('${1:}','location',${2:});\n",
+    "description": "CI - URL Helper - redirect with response code"
+  },
+  "redirect": {
+    "prefix": "redirect",
+    "body": "\nredirect('${1:}','refresh');\n",
+    "description": "CI - URL Helper - redirect"
+  },
+  "request_headers": {
+    "prefix": "request_headers",
+    "body": "$$this->input->request_headers();\n",
+    "description": "CI - Request Headers"
+  },
+  "run_validation": {
+    "prefix": "run_validation",
+    "body": "$$this->form_validation->run();\n",
+    "description": "CI - Run form validation"
+  },
+  "_server": {
+    "prefix": "_server",
+    "body": "$$this->input->server('${1:name}');\n",
+    "description": "CI - $_SERVER"
+  },
+  "session_all_userdata": {
+    "prefix": "session_all_userdata",
+    "body": "\r$$this->session->all_userdata();\r\n",
+    "description": "CI - Session - Retrieving All Session Data"
+  },
+  "session_sess_destroy": {
+    "prefix": "session_sess_destroy",
+    "body": "\r$$this->session->sess_destroy();\r\n",
+    "description": "CI - Session - Destroying a Session"
+  },
+  "session_set_userdata": {
+    "prefix": "session_set_userdata",
+    "body": "\r\n$$array = array(\r\n\t'${1:key}' => '${2:value}'\r\n);\r\n\r$$this->session->set_userdata( $$array );\r\n",
+    "description": "CI - Session - Adding Custom Session Data"
+  },
+  "session_unset_userdata": {
+    "prefix": "session_unset_userdata",
+    "body": "\r$$this->session->unset_userdata('${1:some_name}');\r\n",
+    "description": "CI - Session - Removing Session Data"
+  },
+  "session_userdata": {
+    "prefix": "session_userdata",
+    "body": "\r$$this->session->userdata('${1:item}');\r\n",
+    "description": "CI - Session - Retrieving Session Data"
+  },
+  "set_cookie": {
+    "prefix": "set_cookie",
+    "body": "$$this->input->set_cookie('${1:name}', '${2:value}', '${3:expire}', '${4:domain}', '${5:path}','${6:prefix}', '${7:secure}');\n",
+    "description": "CI - Set Cookie"
+  },
+  "set_flashdata": {
+    "prefix": "set_flashdata",
+    "body": "$$this->session->set_flashdata('${1:name}', '${2:value}');\n",
+    "description": "CI - Set flashdata"
+  },
+  "set_json": {
+    "prefix": "set_json",
+    "body": "$$this->output->set_content_type('application/json');\n",
+    "description": "CI - Set content type to json"
+  },
+  "site": {
+    "prefix": "site",
+    "body": "\nsite_url('${1:}')\n",
+    "description": "CI - URL Helper - site_url"
+  },
+  "th": {
+    "prefix": "th",
+    "body": "$${1:this}->$2",
+    "description": "PHP - $this or other object use"
+  },
+  "unit_run": {
+    "prefix": "unit_run",
+    "body": "$$this->unit->run(\n\t$$result = ${1},\n\t$$expected = ${2:TRUE}${3:,\n\t'${1}'}${4:,\n\t\\htmlentities($$result).' == '. \\htmlentities($$expected)}\n);\n",
+    "description": "CI - Unit Run"
+  },
+  "upload": {
+    "prefix": "upload",
+    "body": "\n$$config['upload_path'] = '${1:./uploads/}';\n$$config['allowed_types'] = '${2:gif|jpg|png}';\n$$config['max_size']  = '${3:100}';\n$$config['max_width']  = '${4:1024}';\n$$config['max_height']  = '${5:768}';\n\n$$this->load->library('upload', $$config);\n\nif ( ! $$this->upload->do_upload()){\n\t$$error = array('error' => $$this->upload->display_errors());\n}\nelse{\n\t$$data = array('upload_data' => $$this->upload->data());\n\techo \"success\";\n}\n",
+    "description": "CI - Create Upload Boilerplate"
+  },
+  "uri_segment": {
+    "prefix": "uri_segment",
+    "body": "$$this->uri->segment(${1:3})\n",
+    "description": "CI - URI Segment"
+  },
+  "user_agent": {
+    "prefix": "user_agent",
+    "body": "$$this->input->user_agent()\n",
+    "description": "CI - Get user agent"
+  },
+  "valid_ip": {
+    "prefix": "valid_ip",
+    "body": "$$this->input->valid_ip('${1:ip}')\n",
+    "description": "CI - Valid IP"
+  }
 }

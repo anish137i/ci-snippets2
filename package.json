@@ -1,35 +1,39 @@
 {
-    "name": "ci-snippets2",
-    "displayName": "ci-snippets2",
-    "description": "Ths is a collection of snippets for the CodeIgniter PHP Framework.",
-    "version": "1.0.0",
-    "publisher": "Anish-M",
-    "engines": {
-        "vscode": "^1.12.0"
-    },
-    "bugs":{
-        "email": "contact@anishmandal.in"
-    },
-    "keywords": [
-        "PHP",
-        "CI",
-        "CodeIgniter",
-        "Framework"
-    ],
-    "categories": [
-        "Snippets"
-    ],
-    "icon": "cilogo.png",
-    "galleryBanner": {
-        "color": "#dd5106",
-        "theme": "dark"
-    },
-    "contributes": {
-        "snippets": [
-            {
-                "language": "php",
-                "path": "./snippets/snippets.json"
-            }
-        ]
-    }
+  "name": "ci-snippets2",
+  "displayName": "ci-snippets2",
+  "description": "Ths is a collection of snippets for the CodeIgniter PHP Framework.",
+  "version": "1.0.1",
+  "publisher": "Anish-M",
+  "engines": {
+    "vscode": "^1.12.0"
+  },
+  "bugs": {
+    "email": "contact@anishmandal.in"
+  },
+  "keywords": [
+    "PHP",
+    "CI",
+    "CodeIgniter",
+    "Framework"
+  ],
+  "categories": [
+    "Snippets"
+  ],
+  "icon": "cilogo.png",
+  "galleryBanner": {
+    "color": "#dd5106",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anish137i/ci-snippets2.git"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "php",
+        "path": "./snippets/snippets.json"
+      }
+    ]
+  }
 }
